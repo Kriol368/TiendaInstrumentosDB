@@ -1,6 +1,6 @@
 package org.example
 
-import org.example.InstrumentoDAO.crearCategoriaYTransferirInstrumento
+import org.example.CategoriaDAO.crearCategoriaYTransferirInstrumento
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
