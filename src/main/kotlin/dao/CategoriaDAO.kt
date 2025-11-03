@@ -1,5 +1,6 @@
-package org.example
+package org.example.dao
 
+import org.example.conectarBD
 import java.sql.SQLException
 
 data class Categoria(

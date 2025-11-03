@@ -1,6 +1,11 @@
 package org.example
 
-import org.example.CategoriaDAO.crearCategoriaYTransferirInstrumento
+import org.example.menu.menuCategorias
+import org.example.menu.menuCrearCategoriaYTransferir
+import org.example.menu.menuFunciones
+import org.example.menu.menuInstrumentos
+import org.example.menu.menuProcedimientos
+import org.example.menu.menuProveedores
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -33,7 +38,9 @@ fun menu() {
         println("2. Gestionar Categorías")
         println("3. Gestionar Proveedores")
         println("4. Crear categoria y transferir un instrumento")
-        println("5. Salir")
+        println("5. Funciones")
+        println("6. Procedimientos")
+        println("7. Salir")
         print("Seleccione una opción: ")
 
         opcion = try {
@@ -48,37 +55,12 @@ fun menu() {
             2 -> menuCategorias()
             3 -> menuProveedores()
             4 -> menuCrearCategoriaYTransferir()
-            5 -> println("Saliendo del programa...")
+            5 -> menuFunciones()
+            6 -> menuProcedimientos()
+            7 -> println("Saliendo del programa...")
             else -> println("Introduce una opcion válida")
         }
-    } while (opcion != 5)
+    } while (opcion != 7)
 
     scanner.close()
-}
-
-fun menuCrearCategoriaYTransferir() {
-    println("\n=== CREAR CATEGORÍA Y TRANSFERIR INSTRUMENTO ===")
-
-    println("\n--- Nueva Categoría ---")
-    print("Nombre de la categoría: ")
-    val nombreCategoria = readlnOrNull()?.trim() ?: ""
-
-    print("Descripción: ")
-    val descripcion = readlnOrNull()?.trim() ?: ""
-
-    if (nombreCategoria.isEmpty() || descripcion.isEmpty()) {
-        println("El nombre y descripción son obligatorios")
-        return
-    }
-
-    println("\n--- Instrumento a Transferir ---")
-    print("ID del Instrumento: ")
-    val idInstrumento = readlnOrNull()?.toIntOrNull()
-
-    if (idInstrumento == null) {
-        println("ID de instrumento no válido")
-        return
-    }
-
-    crearCategoriaYTransferirInstrumento(nombreCategoria, descripcion, idInstrumento)
 }

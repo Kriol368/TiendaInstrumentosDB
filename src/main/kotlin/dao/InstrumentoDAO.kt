@@ -1,4 +1,6 @@
-package org.example
+package org.example.dao
+
+import org.example.conectarBD
 
 data class Instrumento(
     val id: Int? = null,

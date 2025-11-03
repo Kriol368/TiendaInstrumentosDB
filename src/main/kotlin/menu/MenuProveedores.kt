@@ -1,5 +1,7 @@
-package org.example
+package org.example.menu
 
+import org.example.dao.Proveedor
+import org.example.dao.ProveedorDAO
 import java.util.Scanner
 
 fun menuProveedores() {

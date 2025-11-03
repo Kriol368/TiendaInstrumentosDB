@@ -1,5 +1,7 @@
-package org.example
+package org.example.menu
 
+import org.example.dao.Categoria
+import org.example.dao.CategoriaDAO
 import java.util.Scanner
 
 fun menuCategorias() {

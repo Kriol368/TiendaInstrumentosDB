@@ -1,4 +1,6 @@
-package org.example
+package org.example.dao
+
+import org.example.conectarBD
 
 data class Proveedor(
     val id: Int? = null, val nombre: String, val telefono: Int, val email: String, val direccion: String
