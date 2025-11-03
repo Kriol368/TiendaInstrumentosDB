@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.xerial:sqlite-jdbc:3.43.0.0") //SQLite
+    implementation("mysql:mysql-connector-java:8.0.33")
 }
 
 tasks.test {

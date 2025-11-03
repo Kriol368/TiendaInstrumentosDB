@@ -6,7 +6,9 @@ import java.sql.DriverManager
 import java.sql.SQLException
 import java.util.*
 
-const val URL_BD = "jdbc:sqlite:src/main/resources/tiendaInstrumentos.sqlite"
+const val URL_BD = "jdbc:mysql://98.90.164.146:3306/tiendainstrumentos"
+const val USUARIO_BD = "abm"
+const val PASSWORD_BD = "Taller2014"
 
 fun main() {
     menu()
@@ -14,7 +16,7 @@ fun main() {
 
 fun conectarBD(): Connection? {
     return try {
-        DriverManager.getConnection(URL_BD)
+        DriverManager.getConnection(URL_BD, USUARIO_BD, PASSWORD_BD)
     } catch (e: SQLException) {
         e.printStackTrace()
         null
@@ -49,7 +51,7 @@ fun menu() {
             5 -> println("Saliendo del programa...")
             else -> println("Introduce una opcion válida")
         }
-    } while (opcion != 4)
+    } while (opcion != 5)
 
     scanner.close()
 }
