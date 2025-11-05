@@ -83,10 +83,6 @@ fun actualizarPreciosPorCategoria() {
     val categoriaId = try {
         readlnOrNull()?.toInt() ?: -1
     } catch (_: Exception) {
-        -1
-    }
-
-    if (categoriaId == -1) {
         println("ID debe ser un número válido")
         return
     }
@@ -103,7 +99,7 @@ fun actualizarPreciosPorCategoria() {
         return
     }
 
-    print("¿Está seguro de actualizar los precios de la categoría $categoriaId en un $porcentaje%? (s/n): ")
+    print("¿Está seguro de que quieres actualizar los precios de la categoría $categoriaId en un $porcentaje%? (s/n): ")
     val confirmacion = readlnOrNull()?.trim()?.lowercase()
 
     if (confirmacion == "s") {

@@ -1,7 +1,7 @@
 package org.example.menu
 
 import org.example.dao.FuncionesDAO
-import java.util.Scanner
+import java.util.*
 
 fun menuFunciones() {
     val scanner = Scanner(System.`in`)
@@ -37,10 +37,6 @@ fun contarInstrumentosPorProveedor() {
     val proveedorId = try {
         readlnOrNull()?.toInt() ?: -1
     } catch (_: Exception) {
-        -1
-    }
-
-    if (proveedorId == -1) {
         println("ID debe ser un número válido")
         return
     }
@@ -61,13 +57,10 @@ fun calcularPromedioPreciosPorCategoria() {
     val categoriaId = try {
         readlnOrNull()?.toInt() ?: -1
     } catch (_: Exception) {
-        -1
-    }
-
-    if (categoriaId == -1) {
         println("ID debe ser un número válido")
         return
     }
+
 
     val promedio = FuncionesDAO.calcularPromedioPreciosPorCategoria(categoriaId)
 
