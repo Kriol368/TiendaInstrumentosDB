@@ -2,6 +2,7 @@ package org.example.dao
 
 import org.example.conectarBD
 import java.sql.SQLException
+import java.sql.Statement
 
 data class Categoria(
     val id: Int? = null, val nombre: String, val descripcion: String
@@ -112,17 +113,16 @@ object CategoriaDAO {
             try {
                 conn.autoCommit = false
 
+                var idNuevaCategoria: Int? = null
                 conn.prepareStatement(
-                    "INSERT INTO categoria (nombre, descripcion) VALUES (?, ?)"
+                    "INSERT INTO categoria (nombre, descripcion) VALUES (?, ?)",
+                    Statement.RETURN_GENERATED_KEYS
                 ).use { insertStmt ->
                     insertStmt.setString(1, nombreCategoria)
                     insertStmt.setString(2, descripcion)
                     insertStmt.executeUpdate()
-                }
 
-                var idNuevaCategoria: Int? = null
-                conn.prepareStatement("SELECT last_insert_rowid()").use { stmt ->
-                    stmt.executeQuery().use { rs ->
+                    insertStmt.generatedKeys.use { rs ->
                         if (rs.next()) {
                             idNuevaCategoria = rs.getInt(1)
                         } else {
@@ -169,5 +169,4 @@ object CategoriaDAO {
             }
         } ?: println("No se pudo establecer la conexión con la base de datos")
     }
-
 }
